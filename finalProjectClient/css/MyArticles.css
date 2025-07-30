@@ -1,0 +1,156 @@
+﻿/* css/MyArticles.css */
+
+body {
+    font-family: 'Segoe UI', 'Open Sans', sans-serif;
+    background-color: #eef6fb;
+    margin: 0;
+    padding: 20px;
+}
+
+.article-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #d0ebff; /* גוון תכלת */
+    border: 1px solid #a2d2ff;
+    border-radius: 16px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 850px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+    .article-card:hover {
+        transform: scale(1.02);
+    }
+
+    .article-card img {
+        width: 220px;
+        height: auto;
+        border-radius: 12px;
+        margin-right: 25px;
+        object-fit: cover;
+    }
+
+    .article-card .content {
+        flex: 1;
+        font-size: 1.1em;
+    }
+
+    .article-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #003566;
+    }
+
+    .article-card p {
+        margin: 5px 0;
+        color: #1d3557;
+    }
+
+    .article-card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #023e8a;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .article-card a:hover {
+            text-decoration: underline;
+        }
+
+.save-article-btn {
+    margin-top: 12px;
+    padding: 8px 14px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+    .save-article-btn:hover {
+        background-color: #005f8c;
+    }
+/* סרגל ניווט */
+.top-nav {
+    background-color: #0077b6;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+    .top-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+        .top-nav a:hover {
+            text-decoration: underline;
+        }
+
+/* כותרת ודף */
+.page-header {
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+    .page-header h1 {
+        font-size: 2em;
+        color: #003566;
+        margin-bottom: 15px;
+    }
+
+/* תיבת חיפוש */
+#my-search-box {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+    #my-search-box input {
+        padding: 8px;
+        width: 250px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    #my-search-box button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 6px;
+        background-color: #007acc;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+        #my-search-box button:hover {
+            background-color: #005f99;
+        }
+
+
+.delete-article-btn {
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #dc3545; /* אדום */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+    .delete-article-btn:hover {
+        background-color: #a71d2a; /* אדום כהה יותר */
+    }
+

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Firebase App (ליבת המערכת) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="scripts/firebaseJs.js"></script>
+    <link href="css/sharesCss.css" rel="stylesheet" />
+
+    <title></title>
+</head>
+<body>
+    <h1>📢 שיתופים של משתמשים</h1>
+    <a href="index.html" class="home-btn-link">🏠 Home</a>
+
+    <div id="sharesContainer"></div>
+    <!-- report window -->
+    <div id="reportModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-report-modal">&times;</span>
+            <h3>⚠ מה סיבת הדיווח?</h3>
+            <textarea id="reportReason" rows="4" style="width: 100%;" placeholder="כתוב כאן..."></textarea>
+            <button id="submitReport">שלח דיווח</button>
+        </div>
+    </div>
+
+    <script src="scripts/sharesJs.js" defer></script>
+</body>
+</html>

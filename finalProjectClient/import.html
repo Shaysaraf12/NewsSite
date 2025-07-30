@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ייבוא כתבות</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>ייבוא כתבות לפי מקור</h2>
+
+    <button onclick="importArticles('apple')"> ייבוא Apple</button>
+    <button onclick="importArticles('tesla')"> ייבוא Tesla</button>
+    <button onclick="importArticles('business')"> ייבוא Business</button>
+    <button onclick="importArticles('techcrunch')"> ייבוא TechCrunch</button>
+    <button onclick="importArticles('wallstreet')">ייבוא Wall Street</button>
+
+    <p id="status"></p>
+
+    <script>
+        function importArticles(source) {
+            $.post(`https://localhost:7122/api/Article/import/${source}`, function () {
+                $("#status").text(`✅ article from:-${source} imported successfully!`);
+            }).fail(function () {
+                $("#status").text(`❌ Error importing articles-${source}`);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Firebase App (ליבת המערכת) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="scripts/firebaseJs.js"></script>
+    <link href="css/adminCss.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <!--//User Table.//-->
+    <h1>Users Table</h1>
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="usersTableBody">
+        </tbody>
+    </table>
+
+    <!--Pull Count-->
+    <h3>Today's Logins: <span id="login-count">Loading...</span></h3>
+
+    <button onclick="getPullCount()">📊 כמות משיכות</button>
+
+    <p id="pull-count-result"></p>
+
+    <!--Add article!!-->
+    <button id="add-article-btn">➕ הוסף כתבה</button>
+    <div id="add-article-modal" style="display:none;">
+        <h3>Add New Article</h3>
+        <form id="addArticleForm">
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" id="titleTB" required /></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><textarea id="descriptionTB"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Article URL:</td>
+                    <td><input type="text" id="urlTB" /></td>
+                </tr>
+                <tr>
+                    <td>Image URL:</td>
+                    <td><input type="text" id="imageTB" required /></td>
+                </tr>
+                <tr>
+                    <td>Published At:</td>
+                    <td><input type="datetime-local" id="publishedAtTB" /></td>
+                </tr>
+                <tr>
+                    <td>Source Name:</td>
+                    <td><input type="text" id="sourceTB" /></td>
+                </tr>
+                <tr>
+                    <td>Content:</td>
+                    <td><textarea id="contentTB"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Author:</td>
+                    <td><input type="text" id="authorTB" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button type="submit">Add Article</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+     <!--Report and Restore Articles-->
+    <button id="loadReportsBtn"> דיווחים</button>
+    <button id="show-deleted-btn">שחזר כתבות שנמחקו</button>
+    <div id="deleted-articles-container"></div>
+
+    <div id="reportsTableContainer" style="margin-top: 20px;"></div>
+
+
+    <!--Article Saved Count-->
+    <h3 style="text-align: center; margin-top: 40px;">
+        סך כל הכתבות שנשמרו היום: <span id="totalCount">0</span>
+    </h3>
+
+    <table id="articlesTable">
+        <thead>
+            <tr>
+                <th>שם כתבה</th>
+                <th>כמות שמירות</th>
+            </tr>
+        </thead>
+        <tbody id="articlesTableBody">
+        </tbody>
+    </table>
+    <script src="scripts/adminJs.js "></script>
+</body>
+</html>

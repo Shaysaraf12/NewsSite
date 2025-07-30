@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>News</title>
+    <link href="css/indexCss.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Firebase App  -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="scripts/firebaseJs.js"></script>
+    <script src="scripts/SideMenuJs.js" defer></script>
+
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <nav class="top-nav">
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="MyArticles.html">MyArticles</a>
+            <a href="Shares.html">Shares</a>
+            <a href="import.html" class="admin-only">Import News</a>
+            <a href="admin.html" class="admin-only">Admin Info</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">My Account ⌄</button>
+                <div class="dropdown-content">
+                    <a href="login.html">Login</a>
+
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-info">
+            <span id="greeting">Hello, Guest</span>
+            <img id="profilePic" src="Profile.png" alt="Profile Picture">
+        </div>
+    </nav>
+
+
+
+    <h1>Need Some  help? search here</h1>
+    <!-- Search Bar -->
+
+    <div class="search-bar">
+        <input type="text" id="textQuery" placeholder="Search by title or source">
+        <button id="searchTextBtn">Search</button>
+        <button id="voiceSearchBtn" title="Voice Search" class="mic-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fff" viewBox="0 0 24 24">
+                <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0h-2zm-5 9c2.67 0 8-1.34 8-4h-2c0 1.5-3.58 2.5-6 2.5S6 17.5 6 16H4c0 2.66 5.33 4 8 4z" />
+            </svg>
+            <span class="waves">
+                <span class="wave"></span>
+                <span class="wave"></span>
+                <span class="wave"></span>
+            </span>
+        </button>
+
+
+        <input type="date" id="fromDate">
+        <input type="date" id="toDate">
+        <button id="searchDateBtn">Search by date</button>
+    </div>
+
+    <!--Random News-->
+    <div style="display: flex; justify-content: center;">
+        <section id="latest-articles-section" style="max-width: 800px; width: 100%;">
+            <h2 style="text-align: center;">Most Popular articles</h2>
+            <div id="latest-slider" class="slider-container">
+            </div>
+        </section>
+    </div>
+
+    <!-- שורת קטגוריות -->
+    <h1>Which News do you need today?</h1>
+
+    <div class="category-bar">
+        <span class="category" data-tag="Apple">Apple</span>
+        <span class="category" data-tag="Tesla">Tesla</span>
+        <span class="category" data-tag="Finance">Finance</span>
+        <span class="category" data-tag="AI">AI</span>
+        <span class="category" data-tag="All">All</span>
+
+
+
+    </div>
+
+
+
+    <!-- Friend Sidebar -->
+    <div class="friend-sidebar" id="friendSidebar">
+        <button id="toggleSidebarBtn">☰</button> <!-- כפתור פתיחה/סגירה -->
+        <button id="addFriendBtn">Add Friend</button>
+        <button id="notificationsBtn">Notifications</button>
+        <button id="friendsListBtn">My Friends</button>
+        <button id="blockedListBtn">Blocked List</button>
+    </div>
+
+    <!-- Add Friend Modal -->
+    <div id="addFriendModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-add-friend-modal" style="float:right; cursor:pointer;">&times;</span>
+            <h3>Add a Friend</h3>
+            <input type="text" id="searchUsernameInput" placeholder="Enter username..." />
+            <button id="searchFriendBtn">Search</button>
+            <div id="searchFriendResult" style="margin-top:10px;"></div>
+        </div>
+    </div>
+
+    <!-- My Friends Modal -->
+    <div id="myFriendsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-my-friends-modal" style="float:right; cursor:pointer;">&times;</span>
+            <h3>My Friends</h3>
+            <ul id="friendsList" style="list-style: none; padding: 0;"></ul>
+        </div>
+    </div>
+
+    <!-- Blocked Users Modal -->
+    <div id="blockedUsersModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-blocked-users-modal" style="float:right; cursor:pointer;">&times;</span>
+            <h3>Blocked Users</h3>
+            <ul id="blockedList" style="list-style: none; padding: 0;"></ul>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div id="notificationsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-notifications-modal" style="float:right; cursor:pointer;">&times;</span>
+            <h3>Notifications</h3>
+            <ul id="notificationsList" style="list-style: none; padding: 0;"></ul>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" style="display: none;" class="modal">
+        <div class="modal-content">
+            <span id="closeChatModal" class="close">&times;</span>
+            <h3 id="chatWithTitle">Chat with ...</h3>
+            <div id="chatMessages" style="height: 250px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                <!-- messages will appear here -->
+            </div>
+            <input type="text" id="chatInput" placeholder="Type a message..." style="width: 80%;" />
+            <button id="sendChatBtn">Send</button>
+        </div>
+    </div>
+
+
+    <!-- Ai Summary Modal -->
+    <div id="summary-modal" class="modal-chat" style="display: none;">
+        <div class="modal-content-chat">
+            <span class="close-button close-modal" style="cursor: pointer;">&times;</span>
+            <h3>🧠 סיכום הכתבה</h3>
+            <p id="summary-text" class="summary-text"></p>
+        </div>
+    </div>
+
+    <!--Website Front-->
+    <h1>News</h1>
+    <div id="articles-container"></div>
+    <div id="shareModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>רוצה לכתוב משהו על זה?</h3>
+            <textarea id="shareComment" rows="4" style="width: 100%;" placeholder="שתף מה אתה חושב..."></textarea>
+            <button id="confirmShare">שיתוף</button>
+        </div>
+    </div>
+    <script src="scripts/indexJs.js"></script>
+
+</body>
+</html>
