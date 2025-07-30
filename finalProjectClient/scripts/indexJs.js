@@ -403,7 +403,7 @@ async function handleVoiceSearch() {
             const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
                 method: "POST",
                 headers: {
-                    "Authorization": "Bearer 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"
+                    "Authorization": ""
                 },
                 body: formData
             });

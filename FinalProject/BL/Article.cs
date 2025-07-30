@@ -91,7 +91,7 @@ namespace FinalProject.BL
             if (string.IsNullOrWhiteSpace(this.Content))
                 return "❌ Nothing to Summerise.";
 
-            string apiKey = "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"; 
+            string apiKey = ""; 
 
             if (string.IsNullOrWhiteSpace(apiKey))
                 return "🔒 No Api Key.";
