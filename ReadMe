@@ -1,9 +1,9 @@
-📰 NewsSocial – Social News Website
+ NewsSocial – Social News Website
 
 NewsSocial is a news website built with C# and .NET Core that simulates a social media experience.
 Users can read news articles, like, comment, share posts, add friends, and even get AI-generated summaries of articles.
 
-🚀 Features
+Features
 
 Display news articles with images and content
 
@@ -17,7 +17,7 @@ AI-powered article summaries
 
 Responsive design for desktop & mobile
 
-🛠️ Tech Stack
+ Tech Stack
 
 Backend: C#, .NET Core
 
@@ -25,6 +25,6 @@ Frontend: HTML, CSS, JavaScript
 
 Database: SQL Server (or specify your DB)
 
-🌐 Live Demo
+ Live Demo
 
 Check the website here: https://proj.ruppin.ac.il/cgroup23/test2/tar5/index.html
